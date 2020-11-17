@@ -51,7 +51,7 @@ pid.PID_CHECK_ACCESSDENIED = "PID_CHECK_ACCESSDENIED"
 pid.PID_CHECK_RUNNING = "PID_CHECK_RUNNING"
 
 
-class FireWorksRocketLauncherManager():
+class FireWorksRocketLauncherManager:
     """Base class for managing FireWorks-related daemons."""
 
     # The whole purpose of the following list of properties is to make

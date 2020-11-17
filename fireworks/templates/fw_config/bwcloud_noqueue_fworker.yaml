@@ -5,15 +5,9 @@ env:
   exchange_substrate.py: module purge;
         module load MDTools Ovito;
         exchange_substrate.py
-  extract_bb.py: module purge;
-        module load MDTools-Python-2.7;
-        extract_bb.py
   extract_indenter_nonindenter_forces_from_netcdf.py: module purge;
         module load MDTools;
         extract_indenter_nonindenter_forces_from_netcdf.py
-  extract_bb.py: module purge;
-        module load MDTools-Python-2.7;
-        extract_pp.py
   extract_property.py: module purge;
         module load MDTools;
         module load Ovito;

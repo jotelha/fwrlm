@@ -26,8 +26,8 @@ if __name__ == "__main__":
     setup(
         author='Johannes Laurin Hoermann',
         author_email='johannes.hoermann@imtek.uni-freiburg.de',
-        name='imteksimfw',
-        description='Fireworks additions',
+        name='fwrlm',
+        description='FireWorks RocketLauncher Manager',
         long_description=readme,
         url=url,
         use_scm_version={
@@ -40,6 +40,7 @@ if __name__ == "__main__":
         python_requires='>=3.6.5',
         zip_safe=False,
         install_requires=[
+            'ansible >= 2.9.1',  # TODO: the dependency on ansible is only due two 4 simple jinja filters for the render utility, that should be removed at some point
             'fireworks>=1.9.5',
             'jinja2>=2.10',
             'jinja2-time>=0.2.0',
@@ -48,7 +49,6 @@ if __name__ == "__main__":
             'python-daemon>=2.2.4',
             'pid>=3.0.0',
             'psutil>=5.6.1',
-            'six>=1.15.0',
             'tabulate>=0.8.2',
         ],
         setup_requires=['setuptools_scm'],

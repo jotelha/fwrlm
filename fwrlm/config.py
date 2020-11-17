@@ -131,9 +131,9 @@ def override_user_settings():
         config_paths.append(os.environ[FWRLM_CONFIG_FILE_ENV_VAR])
 
     if len(config_paths) > 1:
-        logger.warn("Found many potential paths for {}: {}"
+        logger.warning("Found many potential paths for {}: {}"
             .format(FWRLM_CONFIG_FILE_NAME, config_paths))
-        logger.warn("Choosing as default: {}"
+        logger.warning("Choosing as default: {}"
             .format(config_paths[0]))
 
     if len(config_paths) > 0 and os.path.exists(config_paths[0]):
