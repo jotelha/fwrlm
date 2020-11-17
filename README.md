@@ -95,6 +95,7 @@ optional arguments:
   -h, --help            show this help message and exit
   --debug               debug (default: False)
   --verbose             verbose (default: False)
+  --quiet, -q           quiet (logelevel WARNING) (default: False)
   --log [LOG]           Write log fwrlm.log, optionally specify log name
                         (default: None)
 ```
@@ -168,7 +169,7 @@ Afterwards, inspect the files within your `FW_CONFIG_PREFIX` directory.
   `SCHEDULER` key words obsolete) by explicitly setting the
   `RLAUNCH_FWORKER_FILE`, `QLAUNCH_FWORKER_FILE` and `QADAPTER_FILE` parameters
   within `FWRLM_config.yaml`). Note, however, that the qlaunch worker file and
-  submit script template must be sepcified within the `QADAPTER_FILE`
+  submit script template must be specified within the `QADAPTER_FILE`
   explicitly.
 - Default queue adapter file templates expect a bash script
   `${HOME}/.fireworks_env` that makes your FireWorks environment available, i.e.
@@ -236,7 +237,7 @@ INFO: qlaunch not running.
 INFO: recover running.
 ```
 
-Here, someting went wrong with the `qlaunch` service. Stop services in a
+Here, something went wrong with the `qlaunch` service. Stop services in a
 similar manner:
 
 ```console
