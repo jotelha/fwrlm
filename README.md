@@ -2,7 +2,8 @@
 
 Johannes L. Hörmann, johannes.hoermann@imtek.uni-freiburg.de, 2020
 
-This package facilitates configuring and launching the [FireWorks](https://github.com/materialsproject/fireworks) 
+This package facilitates configuring and launching the 
+[FireWorks](https://github.com/materialsproject/fireworks) 
 workflow management framework. 
 
 ## Quick start
@@ -31,8 +32,7 @@ To get started, pick your favorite configuration file template
 `FWRLM_config.yaml.SAMPLE_MACHINE` from within `imteksimfw/fireworks/examples`
 and copy it to your home directory as `FWRLM_config.yaml`. It might look like
 this:
-
-```
+```yaml
 MACHINE:   JUWELS
 SCHEDULER: SLURM
 

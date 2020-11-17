@@ -29,6 +29,7 @@ if __name__ == "__main__":
         name='fwrlm',
         description='FireWorks RocketLauncher Manager',
         long_description=readme,
+        long_description_content_type="text/markdown",
         url=url,
         use_scm_version={
             "root": '.',

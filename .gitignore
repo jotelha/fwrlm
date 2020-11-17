@@ -1,5 +1,6 @@
 # Custom 
 .idea/**
+dist/**
 fwrlm/version.py
 
 # https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore
