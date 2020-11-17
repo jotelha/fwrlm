@@ -20,11 +20,11 @@ def local_scheme(version):
     return ""
 
 
-url = 'https://github.com/IMTEK-Simulation/imteksimfw'
+url = 'https://github.com/jotelha/fwrlm'
 
 if __name__ == "__main__":
     setup(
-        author='Johannes Laurin Hoermann',
+        author='Johannes Laurin Hörmann',
         author_email='johannes.hoermann@imtek.uni-freiburg.de',
         name='fwrlm',
         description='FireWorks RocketLauncher Manager',
