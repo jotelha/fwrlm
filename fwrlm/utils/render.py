@@ -28,14 +28,12 @@ import json
 import logging
 import os
 import time
+
 import yaml
-
-from tabulate import tabulate
-
+from ansible.plugins.filter.core import to_yaml, to_nice_yaml, to_json, to_nice_json
 from jinja2 import Template, Environment, FileSystemLoader
 from jinja2 import meta, contextfunction  # , select_autoescape
-
-from ansible.plugins.filter.core import to_yaml, to_nice_yaml, to_json, to_nice_json
+from tabulate import tabulate
 
 
 def load_context(context):

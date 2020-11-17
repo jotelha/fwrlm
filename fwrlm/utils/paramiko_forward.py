@@ -31,8 +31,6 @@ connection to a destination reachable from the SSH server machine.
 """
 
 import getpass
-import os
-import socket
 import select
 
 try:

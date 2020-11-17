@@ -26,8 +26,8 @@
 
 import logging
 import socket
-
 from os.path import expanduser
+
 import paramiko
 
 from fwrlm.utils.paramiko_forward import forward_tunnel

@@ -24,8 +24,9 @@
 # SOFTWARE.
 """FireWorksRocketLauncherManager configuration."""
 
-import os
 import logging
+import os
+
 import monty.serialization  # for reading config files
 
 # configuration handling modeled following

@@ -26,15 +26,15 @@
 """Quickly renders a single jinja2 template file from command line."""
 
 import argparse
+import logging
 import os
 import sys  # for stdout and stderr
-import logging
 
-from fwrlm.config import config_to_dict
 from fwrlm.config import FW_CONFIG_PREFIX
 from fwrlm.config import FW_CONFIG_TEMPLATE_PREFIX
-from fwrlm.utils.render import render_single, render_batch
+from fwrlm.config import config_to_dict
 from fwrlm.utils.render import inspect_single, inspect
+from fwrlm.utils.render import render_single, render_batch
 
 
 def render_single_action(args):

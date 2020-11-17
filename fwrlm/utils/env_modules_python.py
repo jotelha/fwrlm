@@ -36,10 +36,12 @@
 #--
 #--------------------------------------------------------------------------
 from __future__ import print_function
-from subprocess import PIPE, Popen
+
+import logging
 import os
 import sys
-import logging
+from subprocess import PIPE, Popen
+
 
 def module(command, *arguments):
     logger = logging.getLogger(__name__)

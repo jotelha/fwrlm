@@ -26,20 +26,18 @@
 """Manages FireWorks rocket launchers and associated scripts as daemons"""
 
 import argparse
+import logging
+import multiprocessing
 import os
 import shutil
 import sys  # for stdout and stderr
-import logging
-import multiprocessing
 
 from fwrlm.base import pid
+from fwrlm.config import config_to_dict, \
+    FW_CONFIG_PREFIX, FW_CONFIG_SKEL_PREFIX, FW_CONFIG_TEMPLATE_PREFIX
 from fwrlm.fwrlm import DummyManager, \
     RLaunchManager, MLaunchManager, QLaunchManager, \
     LPadRecoverOfflineManager, LPadWebGuiManager, SSHTunnelManager
-
-from fwrlm.config import config_to_dict, \
-    FW_CONFIG_PREFIX, FW_CONFIG_SKEL_PREFIX, FW_CONFIG_TEMPLATE_PREFIX
-
 from fwrlm.utils.render import render_batch
 
 DAEMON_DICT = {
