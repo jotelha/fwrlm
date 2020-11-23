@@ -1,3 +1,6 @@
+prune .git
+prune .github
+exclude .gitignore .gitattributes
 recursive-include fireworks/templates *
 recursive-include fireworks/examples *
-recursive-include fwrlm-/utils/README
+include fwrlm/utils/README
