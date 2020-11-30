@@ -79,7 +79,7 @@ env:
 
       ffmpeg:
         init:
-        - 'module("load","GCCcore/.8.3.0","FFmpeg/.4.1.3")'
+        - 'module("load","GCCcore/.8.3.0","X11/20190311","FFmpeg/.4.1.3")'
         - 'module("list")'
 
       gmx:

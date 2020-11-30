@@ -81,7 +81,7 @@ env:
 
       ffmpeg:
         init:
-        - 'module("load","GCCcore/.8.3.0","FFmpeg/.4.1.3")'
+        - 'module("load","GCCcore/.8.3.0","X11/20190311","FFmpeg/.4.1.3")'
         - 'module("list")'
 
       gmx:
@@ -284,7 +284,7 @@ env:
     - 'module("list")'
     - 'module("load", "imteksimcs/devel-Python-3.6.8")'
     - 'module("list")'
-    - 'module("load", "PyMOL/2.3.0-mod-Python-3.6.8")'  
+    - 'module("load", "PyMOL/2.3.0-mod-Python-3.6.8")'
     - 'module("list")'
     - 'for d in list(set(os.environ["PYTHONPATH"].split(":")) - set(sys.path)): site.addsitedir(d)'
     # this last line is nasty
