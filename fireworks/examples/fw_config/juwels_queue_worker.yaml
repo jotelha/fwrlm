@@ -301,3 +301,16 @@ env:
     cmd:
       python:
         prefix: 'srun'
+
+  gmx_and_vmd:
+    init:
+    - 'import site, sys, os, importlib, builtins'
+    - 'builtins.module = importlib.import_module("fwrlm.utils.env_modules_python").module'
+    - 'module("purge", "--force")'
+    - 'module("list")'
+    - 'module("load","Intel/2019.3.199-GCC-8.3.0","IntelMPI/2019.3.199")'
+    - 'module("list")'
+    - 'module("load","GROMACS/2019.3","GROMACS-Top/2019.3")'
+    - 'module("list")'
+    - 'module("load","VMD/text-1.9.3-Python-2.7.16-Tcl-8.6.9")'
+    - 'module("list")'
