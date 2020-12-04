@@ -43,6 +43,11 @@ env:
         - 'module("list")'
         prefix: 'srun'
 
+      charmm2lammps.pl:
+        init:
+        - 'module("load","GCC/8.3.0","charmm2lammps/29Oct2020")'
+        - 'module("list")'
+
       convert:
         init:
         - 'module("load","GCC","ImageMagick")'
