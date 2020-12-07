@@ -38,8 +38,12 @@ env:
     cmd:
       lmp:
         init:
-        - 'module("load","Intel/2019.3.199-GCC-8.3.0","IntelMPI/2019.3.199")'
-        - 'module("load","LAMMPS/24Jan2020-Python-3.6.8")'
+        - 'module("purge", "--force")'
+        - 'module("use", "/p/software/juwels/otherstages")'
+        - 'module("avail")'
+        - 'module("load", "Stages/2020", "Intel/2020.2.254-GCC-9.3.0", "ParaStationMPI/5.4.7-1")'
+        - 'module("list")'
+        - 'module("load", "LAMMPS/29Oct2020")'
         - 'module("list")'
         prefix: 'srun'
 
