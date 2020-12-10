@@ -57,34 +57,12 @@ env:
         - 'module("load","GCC","ImageMagick")'
         - 'module("list")'
 
-      exchange_substrate.py:
-        init:
-        - 'module("load","mdtools","ovitos")'
-        - 'module("list")'
-
       extend_ndx_by_per_atom_groups:
         init:
         - 'module("load","Intel/2019.3.199-GCC-8.3.0","IntelMPI/2019.3.199")'
         - 'module("load","GromacsWrapper/0.8.0-Python-3.6.8","GROMACS-Top/2019.3")'
         - 'module("load","imteksimcs/devel-Python-3.6.8")'
 
-      extract_bb.py:
-        init:
-        - 'module("load","mdtools/01Jun19-python-2.7")'
-        - 'module("list")'
-
-      extract_indenter_nonindenter_forces_from_netcdf.py:
-        init:
-        - 'module("load","mdtools")'
-        - 'module("list")'
-
-      extract_property.py:
-        init:
-        - 'module("load","mdtools","ovitos")'
-        - 'module("list")'
-
-      extract_thermo.sh:
-        init: 'module("load","mdtools")'
 
       ffmpeg:
         init:
@@ -108,9 +86,10 @@ env:
         env:
            FI_PROVIDER: tcp
 
-      join_thermo.py:
+      join_thermo:
         init:
-        - 'module("load","mdtools")'
+        - 'module("load","Intel/2019.3.199-GCC-8.3.0","IntelMPI/2019.3.199")'
+        - 'module("load","imteksimcs/devel-Python-3.6.8")'
         - 'module("list")'
 
       lmp_extract_property:
@@ -119,45 +98,47 @@ env:
         - 'module("load","ovito/3.1.2-Python-3.6.8")'
         - 'module("load","imteksimcs/devel-Python-3.6.8")'
 
-      merge.py:
+      ncfilter:
         init:
-        - 'module("load","mdtools/01Jun19-python-2.7")'
-        - 'module("list")'
-
-      ncfilter.py:
-        init:
-        - 'module("load","mdtools")'
+        - 'module("load","Intel/2019.3.199-GCC-8.3.0","IntelMPI/2019.3.199")'
+        - 'module("load","imteksimcs/devel-Python-3.6.8")'
         - 'module("list")'
         prefix: 'srun'
 
-      ncjoin.py:
+      ncjoin:
         init:
-        - 'module("load","mdtools")'
+        - 'module("load","Intel/2019.3.199-GCC-8.3.0","IntelMPI/2019.3.199")'
+        - 'module("load","imteksimcs/devel-Python-3.6.8")'
         - 'module("list")'
 
       ncap2:
         init:
-        - 'module("load","Intel","IntelMPI","NCO")'
+        - 'module("load","Intel/2019.3.199-GCC-8.3.0","IntelMPI/2019.3.199")'
+        - 'module("load","NCO/4.7.9")'
         - 'module("list")'
 
       ncks:
         init:
-        - 'module("load","Intel","IntelMPI","NCO")'
+        - 'module("load","Intel/2019.3.199-GCC-8.3.0","IntelMPI/2019.3.199")'
+        - 'module("load","NCO/4.7.9")'
         - 'module("list")'
 
       ncrename:
         init:
-        - 'module("load","Intel","IntelMPI","NCO")'
+        - 'module("load","Intel/2019.3.199-GCC-8.3.0","IntelMPI/2019.3.199")'
+        - 'module("load","NCO/4.7.9")'
         - 'module("list")'
 
       ncpdq:
         init:
-        - 'module("load","Intel","IntelMPI","NCO")'
+        - 'module("load","Intel/2019.3.199-GCC-8.3.0","IntelMPI/2019.3.199")'
+        - 'module("load","NCO/4.7.9")'
         - 'module("list")'
 
-      netcdf2data.py:
+      netcdf2data:
         init:
-        - 'module("load","mdtools","ovitos")'
+        - 'module("load","Intel/2019.3.199-GCC-8.3.0","IntelMPI/2019.3.199")'
+        - 'module("load","imteksimcs/devel-Python-3.6.8")'
         - 'module("list")'
 
       packmol:
@@ -169,42 +150,45 @@ env:
         init:
         - 'module("load","GCC/8.3.0","pdb-tools/devel-mod-Python-3.6.8")'
         - 'module("list")'
+
       pdb_delresname:
         init:
         - 'module("load","GCC/8.3.0","pdb-tools/devel-mod-Python-3.6.8")'
         - 'module("list")'
+
       pdb_merge:
         init:
         - 'module("load","GCC/8.3.0","pdb-tools/devel-mod-Python-3.6.8")'
         - 'module("list")'
+
       pdb_reatom_99999:
         init:
         - 'module("load","GCC/8.3.0","pdb-tools/devel-mod-Python-3.6.8")'
         - 'module("list")'
+
       pdb_reres:
         init:
         - 'module("load","GCC/8.3.0","pdb-tools/devel-mod-Python-3.6.8")'
         - 'module("list")'
+
       pdb_reres_9999:
         init:
         - 'module("load","GCC/8.3.0","pdb-tools/devel-mod-Python-3.6.8")'
         - 'module("list")'
+
       pdb_reres_by_atom_9999:
         init:
         - 'module("load","GCC/8.3.0","pdb-tools/devel-mod-Python-3.6.8")'
         - 'module("list")'
+
       pdb_selresname:
         init:
         - 'module("load","GCC/8.3.0","pdb-tools/devel-mod-Python-3.6.8")'
         - 'module("list")'
+
       pdb_tidy:
         init:
         - 'module("load","GCC/8.3.0","pdb-tools/devel-mod-Python-3.6.8")'
-        - 'module("list")'
-
-      pizza.py:
-        init:
-        - 'module("load","mdtools/01Jun19-python-2.7")'
         - 'module("list")'
 
       pymol:
@@ -213,14 +197,16 @@ env:
         - 'module("list")'
         prefix: 'srun'
 
-      strip_comments.py:
+      strip_comments:
         init:
-        - 'module("load","mdtools/01Jun19-python-2.7")'
+        - 'module("load","Intel/2019.3.199-GCC-8.3.0","IntelMPI/2019.3.199")'
+        - 'module("load","imteksimcs/devel-Python-3.6.8")'
         - 'module("list")'
 
-      to_hybrid.py:
+      to_hybrid:
         init:
-        - 'module("load","mdtools")'
+        - 'module("load","Intel/2019.3.199-GCC-8.3.0","IntelMPI/2019.3.199")'
+        - 'module("load","imteksimcs/devel-Python-3.6.8")'
         - 'module("list")'
 
       vmd:
@@ -228,11 +214,6 @@ env:
         - 'module("load","Intel/2019.3.199-GCC-8.3.0","IntelMPI/2019.3.199")'
         - 'module("load","VMD/text-1.9.3-Python-2.7.16-Tcl-8.6.9")'
         - 'module("load","topotools/devel-Tcl-8.6.9","pbctools/devel-mod-Tcl-8.6.9","mergetools/0.2-Tcl-8.6.9")'
-        - 'module("list")'
-
-      smbsync.py:
-        init:
-        - 'module("load","mdtools")'
         - 'module("list")'
 
   imteksimpy:
@@ -247,7 +228,7 @@ env:
     - 'module("list")'
     - 'module("load","ASE/3.17.0-Python-3.6.8")'
     - 'module("list")'
-    - 'module("load","imteksimcs/devel-local-Python-3.6.8")'
+    - 'module("load","imteksimcs/devel-Python-3.6.8")'
     - 'module("list")'
     - 'module("load","imteksimpyenv/devel-Python-3.6.8")'
     - 'module("list")'
@@ -264,7 +245,7 @@ env:
     - 'module("list")'
     - 'module("load","mpi4py/3.0.1-Python-3.6.8")'
     - 'module("list")'
-    - 'module("load","imteksimcs/devel-local-Python-3.6.8")'
+    - 'module("load","imteksimcs/devel-Python-3.6.8")'
     - 'module("list")'
     - 'module("load","GROMACS/2019.3","GROMACS-Top/2019.3","GromacsWrapper/0.8.0-Python-3.6.8")'
     - 'module("list")'
@@ -275,7 +256,7 @@ env:
     cmd:
       python:
         prefix: 'srun'
-  
+
   ase:
     init:
     - 'import site, sys, os, importlib, builtins'
