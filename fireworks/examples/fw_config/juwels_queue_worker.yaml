@@ -105,7 +105,7 @@ env:
         - 'module("avail")'
         - 'module("load", "Stages/2020", "Intel/2020.2.254-GCC-9.3.0", "ParaStationMPI/5.4.7-1")'
         - 'module("list")'
-        - 'module("load","imteksimcs/devel-Python-3.6.8")'
+        - 'module("load","imteksimcs/devel-Python-3.8.5")'
         - 'module("list")'
         prefix: 'srun'
 
