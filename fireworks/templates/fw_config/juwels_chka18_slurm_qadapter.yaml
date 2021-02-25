@@ -1,4 +1,4 @@
-# juwels_hfr13_slurm_qadapter.yaml
+# juwels_chfr13_slurm_qadapter.yaml
 #
 # Copyright (C) 2020 IMTEK Simulation
 # Author: Johannes Hoermann, johannes.hoermann@imtek.uni-freiburg.de
@@ -31,7 +31,7 @@
 _fw_name: CommonAdapter
 _fw_q_type: SLURM
 _fw_template_file: {{ FW_CONFIG_PREFIX }}/juwels_slurm_submit_script.template
-rocket_launch: rlaunch -w {{ FW_CONFIG_PREFIX }}/juwels_queue_worker.yaml -l {{ FW_CONFIG_PREFIX }}/{{ FW_AUTH_FILE_NAME }} singleshot --offline
+rocket_launch: rlaunch -w {{ FW_CONFIG_PREFIX }}/juwels_chka18_queue_worker.yaml -l {{ FW_CONFIG_PREFIX }}/{{ FW_AUTH_FILE_NAME }} singleshot --offline
 ntasks: 96
 cpus_per_task: 1
 ntasks_per_node: 96
@@ -40,7 +40,7 @@ queue: batch
 account: hka18
 job_name: null
 # logdir: path/to/logging
-pre_rocket: source ${HOME}/.fireworks_env
+pre_rocket: source {{ FW_CONFIG_PREFIX }}/juwels_chka18_fireworks_env
 post_rocket: null
 
 # You can override commands by uncommenting and changing the following lines:

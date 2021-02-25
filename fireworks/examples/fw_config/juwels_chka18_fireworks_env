@@ -1,10 +1,12 @@
 #!/bin/bash
 # set up FireWorks environment
 
-jutil env activate -p chfr18
+jutil env activate -p chfr13
 
-# EasyBuild-administered stages
+# EasyBuild-administered stages, in hfr13
 module use $PROJECT/common/juwels/easybuild/otherstages
+
+jutil env activate -p chka18
 
 module load Stages/2019a Intel/2019.3.199-GCC-8.3.0 IntelMPI/2019.3.199
 # the following two lines are a rather ugly fix to have the precompiled ovito
