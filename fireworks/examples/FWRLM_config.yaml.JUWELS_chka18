@@ -1,11 +1,13 @@
-MACHINE:   JUWELS
+INSTANCE:  chka18
+
+MACHINE:   JUWELS_CHKA18
 SCHEDULER: SLURM
 
 FW_CONFIG_PREFIX:     /p/home/jusers/USERNAME/juwels/.fireworks
 FW_CONFIG_FILE_NAME:  FW_config.yaml
 FW_AUTH_FILE_NAME:    fireworks_mongodb_auth.yaml
-LAUNCHPAD_LOC:        /p/scratch/chfr13/USERNAME/fireworks/launchpad
-LOGDIR_LOC:           /p/scratch/chfr13/USERNAME/fireworks/log
+LAUNCHPAD_LOC:        /p/scratch/chka18/USERNAME/fireworks/launchpad
+LOGDIR_LOC:           /p/scratch/chka18/USERNAME/fireworks/log
 
 FIREWORKS_DB:         fireworks
 FIREWORKS_USER:       fireworks
