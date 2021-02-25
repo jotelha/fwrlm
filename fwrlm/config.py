@@ -132,7 +132,12 @@ def override_user_settings():
 
     if FWRLM_CONFIG_FILE_ENV_VAR in os.environ \
             and os.environ[FWRLM_CONFIG_FILE_ENV_VAR] not in config_paths:
-        config_paths.append(os.environ[FWRLM_CONFIG_FILE_ENV_VAR])
+        if os.path.exists(os.environ[FWRLM_CONFIG_FILE_ENV_VAR]):
+            config_paths.insert(0, os.environ[FWRLM_CONFIG_FILE_ENV_VAR])
+        else:
+            logger.warning(
+                "Config '%s' specified via environment variable '%s' does not exist." % (config_paths[0],
+                                                                                         FWRLM_CONFIG_FILE_ENV_VAR))
 
     if len(config_paths) > 1:
         logger.warning("Found many potential paths for {}: {}"
@@ -151,6 +156,8 @@ def override_user_settings():
             logger.info("Set key : value pair '{}' : '{}'"
                 .format(key, v))
             globals()[key] = v
+    elif len(config_paths) > 0:
+        logger.warning("Selected config '%s' does not exist." % config_paths[0])
 
 
 def config_to_dict():

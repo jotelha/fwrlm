@@ -32,6 +32,8 @@ import os
 import shutil
 import sys  # for stdout and stderr
 
+import fwrlm.config  # needed to initialize configuration properly. TODO: make obsolete
+
 from fwrlm.base import pid
 from fwrlm.config import config_to_dict, \
     FW_CONFIG_PREFIX, FW_CONFIG_SKEL_PREFIX, FW_CONFIG_TEMPLATE_PREFIX

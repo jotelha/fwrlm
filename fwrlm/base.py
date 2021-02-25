@@ -210,7 +210,6 @@ class FireWorksRocketLauncherManager:
             self._piddir = pid.utils.determine_pid_directory()
         return self._piddir
 
-    @property
     def pidfile_name(self, prefix=None, suffix=None, extension='.pid'):
         """Get host- and user-specific PID file name."""
         identifier = '{user:s}@{host:}'.format(user=getpass.getuser(), host=socket.gethostname())
