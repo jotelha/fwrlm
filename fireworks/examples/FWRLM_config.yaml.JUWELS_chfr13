@@ -3,7 +3,11 @@ INSTANCE:  chfr13
 MACHINE:   JUWELS
 SCHEDULER: SLURM
 
-FW_CONFIG_PREFIX:     /p/home/jusers/USERNAME/juwels/.fireworks
+FWRLM_CONFIG_FILE_NAME: FWRLM_config_chfr13.yaml
+FWRLM_CONFIG_FILE_DIR: /p/home/jusers/USERNAME/juwels/.fireworks_chfr13
+
+
+FW_CONFIG_PREFIX:     /p/home/jusers/USENAMER/juwels/.fireworks_chfr13
 FW_CONFIG_FILE_NAME:  FW_config.yaml
 FW_AUTH_FILE_NAME:    fireworks_mongodb_auth.yaml
 LAUNCHPAD_LOC:        /p/scratch/chfr13/USERNAME/fireworks/launchpad
@@ -13,10 +17,17 @@ FIREWORKS_DB:         fireworks
 FIREWORKS_USER:       fireworks
 FIREWORKS_PWD:        fireworks
 
-MONGODB_HOST: simdata.vm.uni-freiburg.de
+MONGODB_HOST: localhost
 MONGODB_PORT: 27017
 
 SSL: true
-SSL_CA_CERTS: /p/home/jusers/USERNAME/.ssl/root.pem
-SSL_CERTFILE: /p/home/jusers/USERNAME/.ssl/cert.pem
-SSL_KEYFILE:  /p/home/jusers/USERNAME/.ssl/key.pem
+SSL_CA_CERTS: /p/home/jusers/USERNAME/juwels/.ssl/rootCA.pem
+SSL_CERTFILE: /p/home/jusers/USERNAME/juwels/.ssl/tls_cert.pem
+SSL_KEYFILE:  /p/home/jusers/USERNAME/juwels/.ssl/tls_key.pem
+
+RLAUNCH_MULTI_NPROCESSES: 2
+
+RLAUNCH_FWORKER_FILE_NAME: juwels_chfr13_noqueue_worker.yaml
+QLAUNCH_FWORKER_FILE_NAME: juwels_chfr13_queue_worker.yaml
+QADAPTER_FILE_NAME: juwels_chfr13_slurm_qadapter.yaml
+
