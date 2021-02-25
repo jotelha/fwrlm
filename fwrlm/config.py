@@ -50,7 +50,7 @@ FW_AUTH_FILE_NAME = "fireworks_mongodb_auth.yaml"
 # default loglevel for launcher scripts
 DEFAULT_LOGLEVEL = "DEBUG"
 
-LAUNCHPAD_LOC = os.path.join(os.path.expanduser('~'), "fw_launchpar")
+LAUNCHPAD_LOC = os.path.join(os.path.expanduser('~'), "fw_launchpad")
 LOGDIR_LOC = os.path.join(os.path.expanduser('~'), "fw_logdir")
 
 # allow multiple rlaunch processes (rlaunch multi)
@@ -63,7 +63,7 @@ WEBGUI_PASSWORD = "fireworks"
 WEBGUI_PORT = 19886
 
 # mongodb and ssh tunnel settings
-MONGODB_HOST = 'simdata.vm.uni-freiburg.de'
+MONGODB_HOST = 'localhost'
 MONGODB_PORT = 27017
 FIREWORKS_DB = 'fireworks'
 FIREWORKS_USER = 'fireworks'
@@ -72,8 +72,8 @@ FIREWORKS_PWD = 'fireworks'
 # ssh tunnel settings
 SSH = False
 SSH_PORT_REMOTE = 27017
-SSH_PORT_LOCAL = 27037
-SSH_HOST = 'simdata.vm.uni-freiburg.de'
+SSH_PORT_LOCAL = 27017
+SSH_HOST = 'localhost'
 SSH_USER = 'sshclient'
 SSH_KEY = os.path.join(os.path.expanduser('~'), ".ssh", "id_rsa")
 
@@ -87,22 +87,27 @@ SSL_PEM_PASSPHRASE = None
 # run daemon to periodically check offline runs
 # RECOVER_OFFLINE = True
 
+# optional instance identifier (use run and distinguish between different instances in same environment)
+INSTANCE = None
+
 # MACHINE-specfific settings
 MACHINE = "JUWELS"
 SCHEDULER = 'SLURM'
 
-RLAUNCH_FWORKER_FILE = None
+RLAUNCH_FWORKER_FILE = None  # by absolute path, or ...
+RLAUNCH_FWORKER_FILE_NAME = None  # ... by file name within FW_CONFIG_PREFIX. Absolute overrides relative.
 # if not set explicitly, then stick to automatic convention
 # "${FW_CONFIG_PREFIX}/${MACHINE:lowercase}_noqueue_worker.yaml"
 
-QLAUNCH_FWORKER_FILE = None
+QLAUNCH_FWORKER_FILE = None  # by absolute path, or ...
+QLAUNCH_FWORKER_FILE_NAME = None  # ... by file name within FW_CONFIG_PREFIX. Absolute overrides relative.
 # if not set explicitly, then stick to automatic convention
 # "${FW_CONFIG_PREFIX}/${MACHINE:lowercase}_queue_offline_worker.yaml"
 
-QADAPTER_FILE = None
+QADAPTER_FILE = None  # by absolute path, or ...
+QADAPTER_FILE_NAME = None  # ... by file name within FW_CONFIG_PREFIX. Absolute overrides relative.
 # if not set explicitly, then stick to automatic convention
 # "${FW_CONFIG_PREFIX}/${MACHINE:lowercase}_{SCHEDULER_lowercase}_qadapter_offline.yaml"
-
 
 
 def override_user_settings():

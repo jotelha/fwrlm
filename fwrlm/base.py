@@ -24,10 +24,12 @@
 """Manages FireWorks rocket launchers and associated scripts as daemons."""
 
 import datetime  # for generating timestamps
+import getpass  # get username
 import logging
 import os
 import signal  # for unix system signal treatment, see
 # https://people.cs.pitt.edu/~alanjawi/cs449/code/shell/UnixSignals.htm
+import socket  # for host name
 import sys  # for stdout and stderr
 
 import daemon  # for detached daemons, tested for v2.2.4
@@ -37,11 +39,12 @@ import psutil  # checking process status
 from .config import \
     FW_CONFIG_PREFIX, FW_CONFIG_FILE_NAME, FW_AUTH_FILE_NAME, \
     DEFAULT_LOGLEVEL, \
-    LAUNCHPAD_LOC, LOGDIR_LOC, MACHINE, SCHEDULER, \
+    LAUNCHPAD_LOC, LOGDIR_LOC, INSTANCE, MACHINE, SCHEDULER, \
     MONGODB_HOST, SSH_PORT_REMOTE, SSH_PORT_LOCAL, \
     SSH_HOST, SSH_USER, SSH_KEY, \
     RLAUNCH_MULTI_NPROCESSES, \
     RLAUNCH_FWORKER_FILE, QLAUNCH_FWORKER_FILE, QADAPTER_FILE, \
+    RLAUNCH_FWORKER_FILE_NAME, QLAUNCH_FWORKER_FILE_NAME, QADAPTER_FILE_NAME, \
     WEBGUI_USERNAME, WEBGUI_PASSWORD, WEBGUI_PORT
 
 # define custom error codes
@@ -84,6 +87,10 @@ class FireWorksRocketLauncherManager:
         return DEFAULT_LOGLEVEL
 
     @property
+    def instance(self):
+        return INSTANCE
+
+    @property
     def machine(self):
         return MACHINE
 
@@ -94,9 +101,15 @@ class FireWorksRocketLauncherManager:
     # rlaunch related properties
     @property
     def rlaunch_fworker_file(self):
-        return RLAUNCH_FWORKER_FILE if RLAUNCH_FWORKER_FILE else os.path.join(
+        """Get absolute path of rlaunch worker file."""
+        file = os.path.join(
             FW_CONFIG_PREFIX, "{:s}_noqueue_worker.yaml"
                 .format(self.machine.lower()))
+        if RLAUNCH_FWORKER_FILE_NAME is not None:  # overrides default
+            file = os.path.join(FW_CONFIG_PREFIX, RLAUNCH_FWORKER_FILE_NAME)
+        if RLAUNCH_FWORKER_FILE is not None:  # overrides default
+            file = RLAUNCH_FWORKER_FILE  # absolute path overrides anything
+        return file
 
     @property
     def rlaunch_interval(self):
@@ -110,15 +123,27 @@ class FireWorksRocketLauncherManager:
     # qlaunch related properties
     @property
     def qlaunch_fworker_file(self):
-        return QLAUNCH_FWORKER_FILE if QLAUNCH_FWORKER_FILE else os.path.join(
+        """Get absolute path of qlaunch worker file."""
+        file = os.path.join(
             FW_CONFIG_PREFIX, "{:s}_queue_worker.yaml"
                 .format(self.machine.lower()))
+        if QLAUNCH_FWORKER_FILE_NAME is not None:  # overrides default
+            file = os.path.join(FW_CONFIG_PREFIX, QLAUNCH_FWORKER_FILE_NAME)
+        if QLAUNCH_FWORKER_FILE is not None:  # overrides default
+            file = QLAUNCH_FWORKER_FILE  # absolute path overrides anything
+        return file
 
     @property
     def qadapter_file(self):
-        return QADAPTER_FILE if QADAPTER_FILE else os.path.join(
+        """Get absolute path of qadapter file."""
+        file = os.path.join(
             FW_CONFIG_PREFIX, "{:s}_{:s}_qadapter.yaml"
                 .format(self.machine.lower(), self.scheduler.lower()))
+        if QADAPTER_FILE_NAME is not None:  # overrides default
+            file = os.path.join(FW_CONFIG_PREFIX, QADAPTER_FILE_NAME)
+        if QADAPTER_FILE is not None:  # overrides default
+            file = QADAPTER_FILE  # absolute path overrides anything
+        return file
 
     @property
     def qlaunch_interval(self):
@@ -184,6 +209,26 @@ class FireWorksRocketLauncherManager:
         if not hasattr(self, '_piddir'):
             self._piddir = pid.utils.determine_pid_directory()
         return self._piddir
+
+    @property
+    def pidfile_name(self, prefix=None, suffix=None, extension='.pid'):
+        """Get host- and user-specific PID file name."""
+        identifier = '{user:s}@{host:}'.format(user=getpass.getuser(), host=socket.gethostname())
+        if self.instance is not None:
+            assert isinstance(self.instance, str)
+            identifier = '.'.join((self.instance, identifier))
+        if prefix is not None:
+            assert isinstance(prefix, str)
+            identifier = ''.join((prefix, identifier))
+        if suffix is not None:
+            assert isinstance(suffix, str)
+            identifier = ''.join((identifier, suffix))
+        if extension is not None:
+            assert isinstance(extension, str)
+            identifier = ''.join((identifier, extension))
+        if identifier[0] != '.':
+            identifier = ''.join(('.', identifier))  # hide file
+        return identifier
 
     @property
     def process_name(self):
@@ -312,7 +357,7 @@ class FireWorksRocketLauncherManager:
         try:
             cmd = psutil.Process(p).cmdline()
         except psutil.AccessDenied as exc:
-            self.logger.error("No access to query PID '{:d}'."
+            self.logger.error("No access to PID file '{:s}' of PID '{:d}'."
                 .format(pidfile_path, p))
             if raise_exc:
                 raise exc

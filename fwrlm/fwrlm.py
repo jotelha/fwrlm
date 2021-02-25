@@ -23,9 +23,7 @@
 # SOFTWARE.
 """Manages FireWorks rocket launchers and associated scripts as daemons."""
 
-import getpass  # get username
 import os
-import socket  # for host name
 import subprocess
 import time
 
@@ -37,8 +35,7 @@ class DummyManager(FireWorksRocketLauncherManager):
 
     @property
     def pidfile_name(self):
-        return ".dummy.{user:s}@{host:}.pid".format(
-            user=getpass.getuser(), host=socket.gethostname())
+        return super().pidfile_name(prefix='.dummy.')
 
     @property
     def outfile_name(self):
@@ -65,17 +62,13 @@ class SSHTunnelManager(FireWorksRocketLauncherManager):
 
     @property
     def pidfile_name(self):
-        return (
-            ".ssh_tunnel.{local_port:d}:@{remote_host:s}:{remote_port:d}"
-            ":{jump_user:s}@{jump_host:}.{local_user:s}@{local_host:s}.pid"
-            ).format(
-              local_port=self.local_port,
-              remote_host=self.remote_host,
-              remote_port=self.remote_port,
-              jump_user=self.jump_user,
-              jump_host=self.jump_host,
-              local_user=getpass.getuser(),
-              local_host=socket.gethostname())
+        return super().pidfile_name(prefix=".ssh_tunnel.{local_port:d}:@{remote_host:s}:{remote_port:d}"
+                                           ":{jump_user:s}@{jump_host:}.".format(
+                                                local_port = self.local_port,
+                                                remote_host = self.remote_host,
+                                                remote_port = self.remote_port,
+                                                jump_user = self.jump_user,
+                                                jump_host = self.jump_host))
 
     @property
     def outfile_name(self):
@@ -106,8 +99,7 @@ class RLaunchManager(FireWorksRocketLauncherManager):
 
     @property
     def pidfile_name(self):
-        return ".rlaunch.{user:s}@{host:}.pid".format(
-            user=getpass.getuser(), host=socket.gethostname())
+        return super().pidfile_name(prefix='.rlaunch.')
 
     @property
     def outfile_name(self):
@@ -142,8 +134,7 @@ class QLaunchManager(FireWorksRocketLauncherManager):
 
     @property
     def pidfile_name(self):
-        return ".qlaunch.{user:s}@{host:}.pid".format(
-            user=getpass.getuser(), host=socket.gethostname())
+        return super().pidfile_name(prefix='.qlaunch.')
 
     @property
     def outfile_name(self):
@@ -179,8 +170,7 @@ class MLaunchManager(FireWorksRocketLauncherManager):
 
     @property
     def pidfile_name(self):
-        return ".mlaunch.{user:s}@{host:}.pid".format(
-            user=getpass.getuser(), host=socket.gethostname())
+        return super().pidfile_name(prefix='.mlaunch.')
 
     @property
     def outfile_name(self):
@@ -215,8 +205,7 @@ class LPadRecoverOfflineManager(FireWorksRocketLauncherManager):
 
     @property
     def pidfile_name(self):
-        return ".lpad_recover_offline.{user:s}@{host:}.pid".format(
-            user=getpass.getuser(), host=socket.gethostname())
+        return super().pidfile_name(prefix='.lpad_recover_offline.')
 
     @property
     def outfile_name(self):
@@ -251,12 +240,10 @@ class LPadRecoverOfflineManager(FireWorksRocketLauncherManager):
 
 class LPadWebGuiManager(FireWorksRocketLauncherManager):
     """FireWorks web gui daemon."""
+
     @property
     def pidfile_name(self):
-        return ".lpad_webgui.{user:s}@{host:}:{port:}.pid".format(
-            user=getpass.getuser(),
-            host=socket.gethostname(),
-            port=self.webgui_port)
+        return super().pidfile_name(prefix='.lpad_webgui.', suffix=':{port:}'.format(port=self.webgui_port))
 
     @property
     def outfile_name(self):
