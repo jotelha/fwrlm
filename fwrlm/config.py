@@ -136,7 +136,7 @@ def override_user_settings():
             config_paths.insert(0, os.environ[FWRLM_CONFIG_FILE_ENV_VAR])
         else:
             logger.warning(
-                "Config '%s' specified via environment variable '%s' does not exist." % (config_paths[0],
+                "Config '%s' specified via environment variable '%s' does not exist." % (os.environ[FWRLM_CONFIG_FILE_ENV_VAR],
                                                                                          FWRLM_CONFIG_FILE_ENV_VAR))
 
     if len(config_paths) > 1:
