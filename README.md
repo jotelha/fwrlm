@@ -135,6 +135,10 @@ within `FWRLM_config.yaml`. Other parameters are filled with default values.
 In case of curiosity, look at `imteksimfw/fireworks/fwrlm_config.py` for
 further explanations on parameters in the code comments.
 
+Specify environment variable
+`FWRLM_CONFIG_FILE=path/to/some/other/differently_named_FWRLM_config.yaml`
+to use another config file.
+
 Now, running `fwrlm config reset` will do two things:
 - Copy all files from `FW_CONFIG_SKEL_PREFIX` specified within
   `FWRLM_config.yaml` to `FW_CONFIG_PREFIX`. Former points to this package's
