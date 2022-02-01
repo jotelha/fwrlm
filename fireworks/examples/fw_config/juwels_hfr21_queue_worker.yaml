@@ -234,6 +234,8 @@ env:
     - 'module("list")'
     - 'module("load","ASE/3.17.0-Python-3.6.8")'
     - 'module("list")'
+    - 'module("load","ParmEd/3.1.0-Python-3.6.8")'
+    - 'module("list")'
     - 'module("load","imteksimcs/devel-Python-3.6.8")'
     - 'module("list")'
     - 'module("load","imteksimpyenv/devel-Python-3.6.8")'
