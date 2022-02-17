@@ -228,7 +228,7 @@ env:
     - 'module("list")'
     - 'module("load","Stages/2019a","Intel/2019.3.199-GCC-8.3.0","IntelMPI/2019.3.199")'
     - 'module("list")'
-    - 'module("load","imteksimfw/0.1.5-Python-3.6.8")'
+    - 'module("load","imteksimfw/0.5.0-Python-3.6.8")'
     - 'module("list")'
     - 'module("load","mpi4py/3.0.1-Python-3.6.8")'
     - 'module("list")'
