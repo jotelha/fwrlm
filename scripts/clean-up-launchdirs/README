@@ -1,0 +1,15 @@
+# Quick and dirty
+
+Find and remove all launchdirs belonging to finised workflows.
+
+Set 
+
+  LAUNCHPAD_LOC=/path/to/launchpad
+
+and run 
+
+  ./020_find_launchdirs_belonging_to_completed_wflows.sh
+
+to find all launchdirs belonging to completed workflows.
+
+Configure default launchpad location in 110_*.
