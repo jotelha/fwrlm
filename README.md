@@ -6,6 +6,39 @@ This package facilitates configuring and launching the
 [FireWorks](https://github.com/materialsproject/fireworks) 
 workflow management framework. 
 
+### Using supervisord
+
+If available, we recommend to use supervisord instead of fwrlm to run all services.
+Find a sample configuration within `/etc`. The configuration refers to environment
+variables such as,
+
+```bash
+export FW_CONFIG_PREFIX="${HOME}/.fireworks"
+export FW_AUTH_FILE_PATH="${FW_CONFIG_PREFIX}/fireworks_mongodb_auth.yaml"
+
+export LOGLEVEL=DEBUG
+export RLAUNCH_MULTI_NPROCESSES=8
+
+export RLAUNCH_FWORKER_FILE_NAME=juwels_hfr21_noqueue_worker.yaml
+export QLAUNCH_FWORKER_FILE_NAME=juwels_hfr21_queue_worker.yaml
+export QADAPTER_FILE_NAME=juwels_hfr21_slurm_qadapter.yaml
+
+export RLAUNCH_FWORKER_FILE_PATH="${FW_CONFIG_PREFIX}/${RLAUNCH_FWORKER_FILE_NAME}"
+export QLAUNCH_FWORKER_FILE_PATH="${FW_CONFIG_PREFIX}/${QLAUNCH_FWORKER_FILE_NAME}"
+export QADAPTER_FILE_PATH="${FW_CONFIG_PREFIX}/${QADAPTER_FILE_NAME}"
+
+current_date=$(date +'%Y-%m-%d-%H-%M-%S')
+
+export LAUNCHPAD_LOC="${SCRATCH}/hoermann/fireworks/launchpad"
+export LOGDIR_LOC="${SCRATCH}/hoermann/fireworks/log"
+export RLAUNCH_LOG_PATH="${LOGDIR_LOC}/${current_date}-rlaunch.log"
+export MLAUNCH_LOG_PATH="${LOGDIR_LOC}/${current_date}-mlaunch.log"
+export QLAUNCH_LOG_PATH="${LOGDIR_LOC}/${current_date}-qlaunch.log"
+export RECOVER_LOG_PATH="${LOGDIR_LOC}/${current_date}-revover.log"
+```
+
+Place these variables in some rc file of your choice.
+
 ## Quick start
 
 Install with
@@ -71,7 +104,7 @@ or remove
 from your `~/.fireworks/FW_config.yaml` or from a modified template itself 
 if you are using the configuration samples provided with this package.
 
- Next, understand what
+Next, understand what
 `fwrlm` can do with `fwrlm --help`, i.e.:
 
 ```console
